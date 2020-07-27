@@ -38,22 +38,6 @@
         </li><!-- nav-item -->
         @endadmin
 
-        {{-- @permitTo('ReadNews')
-        <li class="nav-item">
-            <a href="{{ route('admin.news.index') }}" class="nav-link {{ $routeName->contains('news') ? 'active' : '' }}">
-        <i class="fa fa-newspaper-o"></i>
-        <span>احدث الأخبار</span>
-        </a>
-        </li><!-- nav-item -->
-        @endpermitTo --}}
-
-        @permitTo('updateSetting')
-        <li class="nav-item">
-            <a href="{{ route('admin.setting.index') }}" class="nav-link {{ $routeName->contains('setting') ? 'active' : '' }}">
-                <i class="fa fa-gear"></i>
-                <span>الاعدادات</span>
-            </a>
-        </li><!-- nav-item -->
-        @endpermitTo
+        @yield('adminSidebar')
     </ul>
 </div><!-- kt-sideleft -->
