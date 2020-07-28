@@ -79,6 +79,7 @@ class Install extends Command
     protected function publishAndCompileUI()
     {
         $this->warn('6. Publishing UI bootstrap copmonent');
+
         Artisan::call('ui bootstrap --auth -n');
         $this->info(Artisan::output());
         $this->warn('Running npm, please wait...');
