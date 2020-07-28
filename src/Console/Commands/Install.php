@@ -78,7 +78,7 @@ class Install extends Command
 
     protected function publishAndCompileUI()
     {
-        if (!Route::has('login')) {
+        if (!\Route::has('login')) {
             $this->warn('6. Publishing UI bootstrap copmonent');
             Artisan::call('ui bootstrap --auth -n');
             $this->info(Artisan::output());
