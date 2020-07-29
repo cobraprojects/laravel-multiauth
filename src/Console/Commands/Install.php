@@ -57,9 +57,9 @@ class Install extends Command
         Artisan::call('vendor:publish --tag=multiauth:migrations');
         $this->info(Artisan::output());
 
-        $this->warn('3. Publishing Views');
-        Artisan::call('vendor:publish --tag=multiauth:views');
-        $this->info(Artisan::output());
+        // $this->warn('3. Publishing Views');
+        // Artisan::call('vendor:publish --tag=multiauth:views');
+        // $this->info(Artisan::output());
     }
 
     protected function runMigration()
