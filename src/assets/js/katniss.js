@@ -95,3 +95,16 @@ function getSlug(value) {
   slug = slug.replace(/[\s_]+/g, "-");
   return slug;
 }
+
+function formatResult(node) {
+  var level = 0;
+  if (node.element !== undefined) {
+    level = (node.element.className);
+    if (level.trim() !== '') {
+      level = (parseInt(level.match(/\d+/)[0]));
+    }
+  }
+  var color = ['red', 'blue', 'green', 'orange', 'black'];
+  var $result = $('<span style="padding-right:' + (20 * level) + 'px; color:' + (color[level]) + '">' + node.text + '</span>');
+  return $result;
+};
