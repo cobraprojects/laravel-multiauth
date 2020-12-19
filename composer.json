@@ -21,7 +21,7 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "laravel/ui": "^2.1"
+    "laravel/ui": "^3"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.5",
