@@ -107,7 +107,7 @@ class RegisterController extends Controller
 
     public function edit(Admin $admin)
     {
-        $roles = Role::all();
+        $roles = auth()->id() == 1 ? Role::all() : Role::where('id', '!=', 1)->get();
 
         return view('multiauth::admin.edit', compact('admin', 'roles'));
     }
