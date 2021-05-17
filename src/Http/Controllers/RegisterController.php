@@ -46,12 +46,14 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-        $this->middleware('role:super');
+        $this->middleware('permitTo:CreateAdmin')->only('showRegistrationForm', 'create');
+        $this->middleware('permitTo:UpdateAdmin')->only('edit', 'update');
+        $this->middleware('permitTo:DeleteAdmin')->only('destroy');
     }
 
     public function showRegistrationForm()
     {
-        $roles = Role::all();
+        $roles = auth()->id() == 1 ? Role::all() : Role::where('id', '!=', 1)->get();
 
         return view('multiauth::admin.register', compact('roles'));
     }

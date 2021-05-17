@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-        $this->middleware('role:super', ['only' => 'show']);
+        $this->middleware('permitTo:ReadAdmin')->only('index', 'show');
         $this->adminModel = config('multiauth.models.admin');
     }
 
