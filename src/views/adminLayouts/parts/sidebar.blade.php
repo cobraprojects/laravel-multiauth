@@ -34,10 +34,10 @@
                 @permitTo('ReadRole')
                 <li class="nav-item"><a href="{{ route('admin.roles') }}"
                         class="nav-link {{ $routeName->contains('roles')||$routeName->contains('roles') ? 'active' : '' }}">الوظائف والصلاحيات</a></li>
-                @endPermitTo
+                @endpermitTo
                 <li class="nav-item"><a href="{{ route('admin.show') }}" class="nav-link {{ request()->routeIs('admin.show') ? 'active' : '' }} ">المستخدمين</a></li>
             </ul>
         </li><!-- nav-item -->
-        @endPermitTo
+        @endpermitTo
     </ul>
 </div><!-- kt-sideleft -->

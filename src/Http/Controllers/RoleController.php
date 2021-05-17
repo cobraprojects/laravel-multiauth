@@ -12,7 +12,10 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-        $this->middleware('role:super');
+        $this->middleware('permitTo:ReadRole')->only('index');
+        $this->middleware('permitTo:CreateRole')->only('create', 'store');
+        $this->middleware('permitTo:UpdateRole')->only('edit', 'update');
+        $this->middleware('permitTo:DeleteRole')->only('destroy');
     }
 
     public function index()
