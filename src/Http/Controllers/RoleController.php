@@ -17,7 +17,7 @@ class RoleController extends Controller
 
     public function index()
     {
-        $roles = Role::all();
+        $roles = auth()->id() == 1 ? Role::all() : Role::where('id', '!=', 1)->get();
         return view('multiauth::roles.index', compact('roles'));
     }
 
