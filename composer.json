@@ -21,7 +21,6 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "laravel/ui": "^3",
     "laravel/legacy-factories": "1.x-dev"
   },
   "require-dev": {
