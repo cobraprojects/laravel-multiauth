@@ -2,9 +2,9 @@
 
 namespace CobraProjects\Multiauth\Console\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Container\Container;
+use Illuminate\Support\Str;
 
 class MakeMultiAuthCommand extends Command
 {
@@ -69,7 +69,7 @@ class MakeMultiAuthCommand extends Command
         $guard = $this->parseName()['{{singularClass}}'];
 
         $keys = [
-            'guards' => [
+            'guards'    => [
                 'to_replace' => "'guards' => [",
                 'stub'       => file_get_contents("{$this->stub_path}/config/guards.stub"),
             ],
@@ -180,17 +180,9 @@ class MakeMultiAuthCommand extends Command
             return;
         }
 
-        preg_match('/\s+\/\*\*\n\s+\*\s(\w+\s)+"web"\s(\w+\s)+\w+.\n/', $provider, $match);
-        $provider = str_replace($match[0], $map . $match[0], $provider);
-        /********** Function Call **********/
+        $map_call_bait = '$this->routes(function () {';
 
-        $map_call = file_get_contents($this->stub_path . '/routes/map_call.stub');
-
-        $map_call = strtr($map_call, $name_map);
-
-        $map_call_bait = '$this->mapWebRoutes();';
-
-        $provider = str_replace($map_call_bait, $map_call_bait . $map_call, $provider);
+        $provider = str_replace($map_call_bait, $map_call_bait . $map, $provider);
 
         // Overwrite config file
         file_put_contents($provider_path, $provider);
