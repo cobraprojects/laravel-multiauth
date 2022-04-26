@@ -2,9 +2,9 @@
 
 namespace CobraProjects\Multiauth\Console\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Container\Container;
+use Illuminate\Support\Str;
 
 class RollbackMultiAuthCommand extends Command
 {
@@ -16,7 +16,7 @@ class RollbackMultiAuthCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'multiauth:rollback 
+    protected $signature = 'multiauth:rollback
                                 {name=student : Give a name for guard}';
 
     /**
@@ -92,7 +92,7 @@ class RollbackMultiAuthCommand extends Command
             array_map('unlink', glob("{$path}/*.php"));
             rmdir("$path/Auth");
             rmdir($path);
-        } catch (\Exception $ex) {
+        } catch (\Exception$ex) {
             throw new \RuntimeException($ex->getMessage());
         }
         $this->error("Step 2.  Controllers for {$guard} is rollbacked from App\Http\Controller\Student \n");
@@ -105,7 +105,7 @@ class RollbackMultiAuthCommand extends Command
         try {
             unlink(base_path("routes/{$this->name}.php"));
             $this->error("Step 3. Routes for {$this->name} is rollbacked from routes directory \n");
-        } catch (\Exception $e) {
+        } catch (\Exception$e) {
             $this->error($e->getMessage());
         }
 
@@ -135,14 +135,14 @@ class RollbackMultiAuthCommand extends Command
 
     protected function rollbackViews()
     {
-        $guard      = $this->parseName()['{{singularClass}}'];
+        $guard      = strtoloiwer($this->parseName()['{{singularClass}}']);
         $views_path = resource_path("views/{$guard}");
         $dirs       = ['/auth/passwords/', '/auth/', '/layouts/', '/'];
         foreach ($dirs as $dir) {
             array_map('unlink', glob("{$views_path}{$dir}*.php"));
             rmdir($views_path . $dir);
         }
-        $this->error("Step 5. Views are removed from resources\\views\student directory \n");
+        $this->error("Step 5. Views are removed from resources\\views\\" . $guard . " directory \n");
 
         return $this;
     }
@@ -154,7 +154,7 @@ class RollbackMultiAuthCommand extends Command
         try {
             unlink($factory);
             $this->error("Step 6. Factory for {$this->name} is removed from database\\factories directory \n");
-        } catch (\Exception $e) {
+        } catch (\Exception$e) {
             $this->error($e->getMessage());
         }
 
