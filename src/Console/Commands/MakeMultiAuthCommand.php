@@ -70,14 +70,17 @@ class MakeMultiAuthCommand extends Command
 
         $keys = [
             'guards'    => [
+                'preg_replace' => "/'guards'\s*=>\s*\[/",
                 'to_replace' => "'guards' => [",
                 'stub'       => file_get_contents("{$this->stub_path}/config/guards.stub"),
             ],
             'providers' => [
+                'preg_replace' => "/'providers'\s*=>\s*\[/",
                 'to_replace' => "'providers' => [",
                 'stub'       => file_get_contents("{$this->stub_path}/config/providers.stub"),
             ],
             'passwords' => [
+                'preg_replace' => "/'passwords'\s*=>\s*\[/",
                 'to_replace' => "'passwords' => [",
                 'stub'       => file_get_contents("{$this->stub_path}/config/passwords.stub"),
             ],
@@ -85,7 +88,7 @@ class MakeMultiAuthCommand extends Command
 
         foreach ($keys as $key) {
             $compiled = strtr($key['stub'], $this->parseName());
-            $auth     = str_replace($key['to_replace'], $key['to_replace'] . $compiled, $auth);
+            $auth     = preg_replace($key['preg_replace'], $key['to_replace'] . $compiled, $auth);
         }
 
         file_put_contents(config_path('auth.php'), $auth);

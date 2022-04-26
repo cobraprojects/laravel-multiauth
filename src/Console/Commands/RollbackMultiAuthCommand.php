@@ -74,9 +74,10 @@ class RollbackMultiAuthCommand extends Command
         $guard = $this->parseName()['{{singularSnake}}'];
 
         for ($i = 0; $i < 3; $i++) {
-            preg_match_all("/'{$guard}s?'\s*=>\s*\[\n(.*\n){2}.*(\n.*)?\],/", $auth, $match);
+            preg_match_all("/'{$guard}s?'\s*=>\s*\[\r?\n?(.*\n){2}.*(\r?\n.*)?\],/", $auth, $match);
             $auth = str_replace($match[0][0], '', $auth);
         }
+        
         file_put_contents(config_path('auth.php'), $auth);
         $this->error("Step 1. {$guard} Guard is removed from config/auth.php file \n");
 
@@ -135,7 +136,7 @@ class RollbackMultiAuthCommand extends Command
 
     protected function rollbackViews()
     {
-        $guard      = strtoloiwer($this->parseName()['{{singularClass}}']);
+        $guard      = strtolower($this->parseName()['{{singularClass}}']);
         $views_path = resource_path("views/{$guard}");
         $dirs       = ['/auth/passwords/', '/auth/', '/layouts/', '/'];
         foreach ($dirs as $dir) {
