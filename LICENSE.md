@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) Bitfumes<mailto:m.melouk@gmail.com> 
+Copyright (c) CobraProjects<mailto:m.melouk@gmail.com> 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
