@@ -27,7 +27,7 @@ By default it will install every thing you need to start your multiauth and the 
 
 You can login to your admin panel by `http://yourdomain.com/admin`
 the default username is `super@admin.com`.
-the default password is `secret123`.
+the default password is `password`.
 you can change these values from the `config/multiauth.php` file
 
 
