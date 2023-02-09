@@ -21,15 +21,8 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "laravel/legacy-factories": "^1.1",
-    "laravel/ui": "v3.4.5"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^9.5",
-    "mockery/mockery": "^1.4",
-    "orchestra/database": "^6.0",
-    "illuminate/support": "^8.0",
-    "fzaninotto/faker": "^1.9"
+    "laravel/legacy-factories": "^v1.3.0",
+    "laravel/ui": "v4.2.0"
   },
   "autoload": {
     "psr-4": {
