@@ -4,7 +4,7 @@ namespace CobraProjects\Multiauth\Exception;
 
 use Illuminate\Support\Arr;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Foundation\Exceptions\Handler as AppHandler;
+use App\Exceptions\Handler as AppHandler;
 
 class MultiAuthHandler extends AppHandler
 {
